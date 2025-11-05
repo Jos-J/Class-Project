@@ -4,11 +4,11 @@
 
 // Use ../ to go up, then folder names to go down.
 
-#include "../Class-Project/tests/test.h"
-#include "tests/test.h"
+#include "test.h"
 #include <iostream>
 
 int main() {
     std::cout << "hello World";
+    std::cout << " good nite";
     return 0;
 }

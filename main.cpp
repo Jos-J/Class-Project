@@ -5,10 +5,10 @@ using namespace std;
 int main()
 {
     // 1. Print course info
-    cout << "Course: C867 - Scripting and Programming: Applications\n";
+    cout << "Course: L987 - fighting the good fight\n";
     cout << "Language: C++\n";
-    cout << "Student ID: 012325663\n";
-    cout << "Name: joshua james\n\n";
+    cout << "Student ID: 2813308004\n";
+    cout << "Name: John Stewart\n\n";
 
     // 2. Create Roster instance
     Roster classRoster;
@@ -19,7 +19,7 @@ int main()
         "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
         "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
         "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
-        "A5,Joshua,James,jjames23@wgu.edu,37,25,47,37,COMPUTERSCI"};
+        "A5,John,Steward,green.ring@Glatern.com,45,25,47,37,COMPUTERSCI"};
 
     // 3. Add each student to the roster
     for (int i = 0; i < Roster::numStudents; i++)

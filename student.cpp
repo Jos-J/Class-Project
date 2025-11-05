@@ -75,6 +75,8 @@ void Student::print() const
     case SOFTWARE:
         cout << "Software";
         break;
+    case COMPUTERSCI:
+        cout << "COMPUTERSCI";
     }
     cout << endl;
 }

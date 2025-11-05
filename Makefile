@@ -25,3 +25,14 @@ $(TARGET): $(OBJS)
 .PHONY: clean
 clean:
 	rm -f $(OBJS) $(TARGET)
+
+# === Test Section ===
+TEST_SRCS = tests/test_student.cpp
+TEST_OBJS = $(TEST_SRCS:.cpp=.o)
+TEST_TARGET = test_student.exe
+
+test: $(TEST_TARGET)
+	./$(TEST_TARGET)
+
+$(TEST_TARGET): $(TEST_SRCS) student.cpp roster.cpp
+	$(CXX) $(CXXFLAGS) -o $(TEST_TARGET) $(TEST_SRCS) student.cpp roster.cpp

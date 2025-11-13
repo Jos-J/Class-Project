@@ -20,7 +20,7 @@ public:
     Student();
     Student(std::string studentID, std::string firstName, std::string lastName, std::string emailAddress, int age, int daysInCourse[], DegreeProgram degreeProgram);
 
-    //-------Getters----------
+    
     // ------- Getters ----------
     std::string getStudentID() const;
     std::string getFirstName() const;

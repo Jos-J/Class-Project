@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <iomanip>
 #include "roster.h"
 using namespace std;
 
@@ -66,7 +67,7 @@ void Roster::add(string studentID, string firstName, string lastName, string ema
 void Roster::remove(string studentID)
 {
     bool found = false;
-    for (int i = 0; i < numStudents; i++)
+    for (int i = 0; i < lastIndex; i++)
     {
         if (classRosterArray[i] != nullptr && classRosterArray[i]->getStudentID() == studentID)
         {
@@ -85,7 +86,21 @@ void Roster::remove(string studentID)
 
 void Roster::printAll()
 {
-    for (int i = 0; i < numStudents; i++)
+    // Print header
+    cout << left
+         << setw(5) << "ID"
+         << setw(15) << "First Name"
+         << setw(15) << "Last Name"
+         << setw(25) << "Email"
+         << setw(5) << "Age"
+         << setw(15) << "daysInCourse"
+         << setw(20) << "Degree Program"
+         << endl;
+
+    cout << string(110, '-') << endl;
+
+    // Print each student
+    for (int i = 0; i <= lastIndex; i++)
     {
         if (classRosterArray[i] != nullptr)
         {
@@ -96,16 +111,27 @@ void Roster::printAll()
 
 void Roster::printAverageDaysInCourse(string studentID)
 {
+    // Print header
+    cout << left
+         << setw(10) << "Student ID"
+         << setw(25) << " Average Days in Course"
+         << endl;
+    cout << string(35, '-') << endl;
+
     for (int i = 0; i <= lastIndex; i++)
     {
         if (classRosterArray[i] != nullptr &&
             classRosterArray[i]->getStudentID() == studentID)
         {
-
             const int *days = classRosterArray[i]->getDaysInCourse();
-            cout << "Student ID: " << studentID
-                 << ", average days in course: "
-                 << (days[0] + days[1] + days[2]) / 3.0 << endl;
+            double average = (days[0] + days[1] + days[2]) / 3.0;
+
+            cout << left
+                 << setw(10) << studentID
+                 << setw(25) << average
+                 << endl;
+
+            cout << endl; // blank line between rows
             break;
         }
     }
@@ -113,7 +139,12 @@ void Roster::printAverageDaysInCourse(string studentID)
 
 void Roster::printInvalidEmails()
 {
-    cout << "Invalid email addresses:" << endl;
+    // Print header
+    cout << left
+         << setw(30) << "Invalid Email Addresses"
+         << endl;
+    cout << string(30, '-') << endl;
+
     for (int i = 0; i <= lastIndex; i++)
     {
         if (classRosterArray[i] != nullptr)
@@ -123,8 +154,7 @@ void Roster::printInvalidEmails()
                 email.find('@') == string::npos ||
                 email.find('.') == string::npos)
             {
-
-                cout << email << endl;
+                cout << left << setw(30) << email << endl;
             }
         }
     }
@@ -132,12 +162,24 @@ void Roster::printInvalidEmails()
 
 void Roster::printByDegreeProgram(DegreeProgram degreeProgram)
 {
+    // Print header
+    cout << left
+         << setw(5) << "ID"
+         << setw(15) << "First Name"
+         << setw(15) << "Last Name"
+         << setw(25) << "Email"
+         << setw(5) << "Age"
+         << setw(15) << "daysInCourse"
+         << setw(20) << "Degree Program"
+         << endl;
+    cout << string(110, '-') << endl;
+
+    // Print students in the selected degree program
     for (int i = 0; i <= lastIndex; i++)
     {
         if (classRosterArray[i] != nullptr &&
             classRosterArray[i]->getDegreeProgram() == degreeProgram)
         {
-
             classRosterArray[i]->print();
         }
     }

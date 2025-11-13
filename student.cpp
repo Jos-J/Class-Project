@@ -1,4 +1,5 @@
 #include <iostream>
+#include <iomanip>
 #include "student.h"
 using namespace std;
 
@@ -54,32 +55,38 @@ void Student::setDegreeProgram(DegreeProgram degreeProgram) { this->degreeProgra
 // ----- Print Function -----
 void Student::print() const
 {
-    cout << studentID << "\t";
-    cout << "First Name: " << firstName << "\t";
-    cout << "Last Name: " << lastName << "\t";
-    cout << "Email: " << emailAddress << "\t";
-    cout << "Age: " << age << "\t";
-    cout << "daysInCourse: {" << daysInCourse[0] << ", "
-         << daysInCourse[1] << ", " << daysInCourse[2] << "} ";
-    cout << "Degree Program: ";
+    cout << left
+         << setw(5) << studentID
+         << setw(15) << firstName
+         << setw(15) << lastName
+         << setw(25) << emailAddress
+         << setw(5) << age;
 
-    // Convert enum to readable text
+    // Print daysInCourse in fixed width
+    cout << "{"
+         << setw(3) << daysInCourse[0] << ", "
+         << setw(3) << daysInCourse[1] << ", "
+         << setw(3) << daysInCourse[2] << "}  ";
+
+    // Degree program as readable text
+    string degreeStr;
     switch (degreeProgram)
     {
     case SECURITY:
-        cout << "Security";
+        degreeStr = "Security";
         break;
     case NETWORK:
-        cout << "Network";
+        degreeStr = "Network";
         break;
     case SOFTWARE:
-        cout << "Software";
+        degreeStr = "Software";
         break;
     case COMPUTERSCI:
-        cout << "COMPUTERSCI";
+        degreeStr = "Computer Science";
+        break;
     }
-    cout << endl;
+    cout << setw(20) << degreeStr << endl;
 }
-Student::~Student() {
-    
+Student::~Student()
+{
 }

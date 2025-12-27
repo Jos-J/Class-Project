@@ -10,5 +10,7 @@
 int main() {
     std::cout << "hello World";
     std::cout << " good nite";
+    std::cout << " hello my friend";
     return 0;
 }
+
